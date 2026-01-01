@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dipankar Mandal — Cinematic Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Favicon -->
+<link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/1/18/Five-pointed_star.svg" type="image/svg+xml">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;overflow-x:hidden;font-family:Poppins;background:black;color:white;scroll-behavior:smooth}
+
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:40px;animation:fadeIn 1.2s ease forwards}
+.profile{width:160px;height:160px;border-radius:50%;overflow:hidden;
+  border:3px solid #00f0ff;box-shadow:0 0 40px #00f0ff;margin-bottom:20px;animation:float 6s ease-in-out infinite}
+.profile img{width:100%;height:100%;object-fit:cover}
+h1{font-size:3rem;font-weight:800;letter-spacing:3px;text-shadow:0 0 30px #00f0ff}
+.subtitle{margin-top:10px;font-size:1.1rem;color:#9ff;opacity:0.9}
+
+.boxes{display:flex;gap:25px;margin-top:50px;flex-wrap:wrap;justify-content:center}
+.box{width:180px;height:120px;border:1px solid rgba(0,255,255,0.4);backdrop-filter:blur(10px);
+  background:rgba(0,0,0,0.4);box-shadow:0 0 25px rgba(0,255,255,0.4);border-radius:16px;
+  display:flex;align-items:center;justify-content:center;font-weight:600;letter-spacing:1px;
+  animation:float 5s ease-in-out infinite;transition:0.3s}
+.box:hover{transform:scale(1.05);box-shadow:0 0 40px #00f0ff}
+.box:nth-child(2){animation-delay:1s}.box:nth-child(3){animation-delay:2s}.box:nth-child(4){animation-delay:3s}
+
+section{max-width:1000px;margin:120px auto;padding:0 20px;animation:fadeIn 1.2s ease forwards}
+.section-title{font-size:2rem;margin-bottom:20px;text-shadow:0 0 20px #ff55ff}
+p{line-height:1.8;color:#ddd}
+
+.gallery{display:flex;gap:15px;margin-top:40px;flex-wrap:wrap;justify-content:center}
+.gallery img{width:80px;height:80px;object-fit:cover;border-radius:10px;opacity:0.7;transition:0.3s}
+.gallery img:hover{opacity:1;transform:scale(1.2)}
+
+.contact-btn{display:inline-block;padding:14px 28px;background:#00f0ff;color:black;font-weight:700;
+  border-radius:30px;text-decoration:none;box-shadow:0 0 20px #00f0ff;transition:0.3s;margin-top:60px}
+.contact-btn:hover{transform:scale(1.05);box-shadow:0 0 40px #00f0ff}
+
+footer{text-align:center;padding:40px;opacity:0.9}
+.social-btn{display:inline-block;margin:10px;padding:12px 24px;border-radius:25px;text-decoration:none;
+  font-weight:600;color:black;background:#ff55ff;box-shadow:0 0 20px #ff55ff;transition:0.3s}
+.social-btn:hover{transform:scale(1.1);box-shadow:0 0 40px #ff55ff}
+
+/* UI overlays */
+#fpsCounter{position:fixed;bottom:10px;right:20px;background:rgba(0,0,0,0.6);color:#00f0ff;
+  padding:6px 12px;border-radius:8px;font-size:14px;font-weight:600;box-shadow:0 0 10px #00f0ff;pointer-events:none}
+#audioToggle{position:fixed;bottom:10px;left:20px;background:#ff55ff;color:black;padding:8px 14px;border:none;
+  border-radius:8px;font-weight:700;cursor:pointer;box-shadow:0 0 10px #ff55ff;z-index:10}
+
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:600px){h1{font-size:2.2rem}.box{width:150px;height:100px}}
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+  <div class="profile"><img src="IMG_20250319_105253_937.jpg" alt="Dipankar Mandal profile photo"></div>
+  <h1>DIPANKAR MANDAL</h1>
+  <div class="subtitle">Student • Developer • Tech Enthusiast • Aviation & Car Enthusiast </div>
+  <div class="boxes">
+    <div class="box">Developer</div><div class="box">Student</div>
+    <div class="box">Game Dev</div><div class="box">Tech Lover</div>
+  </div>
+  <a href="mailto:dipankar1mandal1@gmail.com" class="contact-btn">Contact Me</a>
+</div>
+
+<section><div class="section-title">About Me</div>
+<p>I am a passionate student from Little Angels School who loves technology, development, aviation, and futuristic design.</p></section>
+
+<section><div class="section-title">Vision</div>
+<p>My goal is to master technology, creativity, and discipline — and someday become a professional pilot while continuing to build powerful digital experiences.</p></section>
+
+<section><div class="section-title">Gallery</div>
+<div class="gallery">
+  <img src="WhatsApp Image 2025-09-11 at 19.08.05_70af0f6b.jpg">
+  <img src="WhatsApp Image 2025-12-27 at 6.41.33 PM.jpg">
+  <img src="WhatsApp Image 2025-12-27 at 6.38.21 PM.jpg">
+</div></section>
+
+<footer>
+  © Dipankar Mandal<br><br>
+  <a href="https://www.facebook.com/share/17voYz3oBU/" target="_blank" class="social-btn">Facebook</a>
+  <a href="https://www.instagram.com/dipankar_mandal10x" target="_blank" class="social-btn">Instagram</a>
+</footer>
+
+<!-- Background Music -->
+<audio id="bgAudio" preload="auto" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+<button id="audioToggle">Sound On</button>
+
+<!-- FPS Counter -->
+<div id="fpsCounter">FPS: 0</div>
+
+<script>
+// FPS Counter
+const fpsEl = document.getElementById('fpsCounter');
+let lastTime = performance.now();
+let frameCount = 0;
+
+function animate(now) {
+  requestAnimationFrame(animate);
+  frameCount++;
+  if (now - lastTime >= 1000) {
+    const fps = Math.round(frameCount * 1000 / (now - lastTime));
+    fpsEl.textContent = 'FPS: ' + fps;
+    frameCount = 0;
+    lastTime = now;
+  }
+}
+requestAnimationFrame(animate);
+
+// Audio toggle
+const audio = document.getElementById("bgAudio");
+const toggleBtn = document.getElementById("audioToggle");
+toggleBtn.addEventListener("click", () => {
+  if (audio.muted) {
+    audio.muted = false;
+    toggleBtn.textContent = "Sound Off";
+    audio.play();
+  } else {
+    audio.muted = true;
+    toggleBtn.textContent = "Sound On";
+  }
+});
+</script>
+
+</body>
+</html>
