@@ -5,6 +5,20 @@
 <title>Dipankar Mandal — Cinematic Portfolio</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- Google Site Verification -->
+<meta name="google-site-verification" content="gFf84mKSF685MKbJdnvZHFHjERS1x-lr1iDYIKI4Qko" />
+
+<!-- SEO Meta -->
+<meta name="description" content="Dipankar Mandal — Student, Developer, Aviation Enthusiast. Explore my cinematic portfolio showcasing tech projects and vision.">
+<meta name="keywords" content="Dipankar Mandal, portfolio, developer, aviation, student, tech enthusiast">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Dipankar Mandal — Cinematic Portfolio">
+<meta property="og:description" content="Student • Developer • Tech Enthusiast • Aviation & Car Enthusiast">
+<meta property="og:image" content="IMG_20250319_105253_937.jpg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yourdomain.com">
+
 <!-- Favicon -->
 <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/1/18/Five-pointed_star.svg" type="image/svg+xml">
 
@@ -14,6 +28,13 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:100%;height:100%;overflow-x:hidden;font-family:Poppins;background:black;color:white;scroll-behavior:smooth}
+
+/* Loading Overlay */
+#loader{position:fixed;top:0;left:0;width:100%;height:100%;background:black;
+display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity 0.8s ease}
+#loader.hidden{opacity:0;pointer-events:none}
+.loader-text{color:#00f0ff;font-size:1.5rem;text-shadow:0 0 20px #00f0ff;animation:pulse 1.5s infinite alternate}
+@keyframes pulse{from{opacity:0.4}to{opacity:1}}
 
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;padding:40px;animation:fadeIn 1.2s ease forwards}
@@ -62,6 +83,9 @@ footer{text-align:center;padding:40px;opacity:0.9}
 
 <body>
 
+<!-- Loading Overlay -->
+<div id="loader"><div class="loader-text">Initializing Experience…</div></div>
+
 <div class="hero">
   <div class="profile"><img src="IMG_20250319_105253_937.jpg" alt="Dipankar Mandal profile photo"></div>
   <h1>DIPANKAR MANDAL</h1>
@@ -81,9 +105,9 @@ footer{text-align:center;padding:40px;opacity:0.9}
 
 <section><div class="section-title">Gallery</div>
 <div class="gallery">
-  <img src="WhatsApp Image 2025-09-11 at 19.08.05_70af0f6b.jpg">
-  <img src="WhatsApp Image 2025-12-27 at 6.41.33 PM.jpg">
-  <img src="WhatsApp Image 2025-12-27 at 6.38.21 PM.jpg">
+  <img src="WhatsApp Image 2025-09-11 at 19.08.05_70af0f6b.jpg" alt="Dipankar at tech fair" loading="lazy">
+  <img src="WhatsApp Image 2025-12-27 at 6.41.33 PM.jpg" alt="Dipankar project showcase" loading="lazy">
+  <img src="WhatsApp Image 2025-12-27 at 6.38.21 PM.jpg" alt="Dipankar aviation interest" loading="lazy">
 </div></section>
 
 <footer>
@@ -102,34 +126,54 @@ footer{text-align:center;padding:40px;opacity:0.9}
 <div id="fpsCounter">FPS: 0</div>
 
 <script>
-// FPS Counter
+// Hide loader once page fully loads
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
+  // Fade out
+  loader.classList.add("hidden");
+  // Remove from layout after fade
+  setTimeout(() => { loader.style.display = "none"; }, 800);
+});
+
+// FPS Counter (smoothed)
 const fpsEl = document.getElementById('fpsCounter');
 let lastTime = performance.now();
 let frameCount = 0;
+let fps = 0;
 
-function animate(now) {
-  requestAnimationFrame(animate);
+function loop(now){
+  requestAnimationFrame(loop);
   frameCount++;
-  if (now - lastTime >= 1000) {
-    const fps = Math.round(frameCount * 1000 / (now - lastTime));
+  const delta = now - lastTime;
+  if (delta >= 500) { // update twice per second for smoother readout
+    const instant = frameCount * 1000 / delta;
+    fps = Math.round((fps * 0.5) + (instant * 0.5)); // simple smoothing
     fpsEl.textContent = 'FPS: ' + fps;
     frameCount = 0;
     lastTime = now;
   }
 }
-requestAnimationFrame(animate);
+requestAnimationFrame(loop);
 
-// Audio toggle
+// Audio toggle: start muted for user-friendly autoplay policy
 const audio = document.getElementById("bgAudio");
 const toggleBtn = document.getElementById("audioToggle");
+audio.muted = true; // ensure muted on load
+toggleBtn.textContent = "Sound On"; // matches muted state
+
 toggleBtn.addEventListener("click", () => {
   if (audio.muted) {
     audio.muted = false;
     toggleBtn.textContent = "Sound Off";
-    audio.play();
+    audio.play().catch(() => {
+      // In case browser blocks, keep state consistent
+      audio.muted = false;
+      toggleBtn.textContent = "Sound Off";
+    });
   } else {
     audio.muted = true;
     toggleBtn.textContent = "Sound On";
+    audio.pause();
   }
 });
 </script>
